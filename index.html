@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servidores web</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/banner.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-menu">
+                <li class="nav-menu-item"><a href="#">Inicio</a></li>
+                <li class="nav-menu-item"><a href="#usos">Usos de un servidor web</a></li>
+                <li class="nav-menu-item dropdown">
+                    <a href="#arquitectura" class="dropdown-button">Arquitectura</a>
+
+                    <div class="dropdown-content">
+                        <a href="#peticion-get">Petición GET</a>
+                        <a href="#peticion-post">Petición POST</a>
+                        <a href="#estructura-respuesta-post">Estructura de respuesta POST</a>
+                    </div>
+                </li>
+                <li class="nav-menu-item dropdown">
+                    <a href="#funcionamiento">Funcionamiento</a>
+
+                    <div class="dropdown-content">
+                        <a href="#aplicaciones-lado-cliente">Aplicaciones en el lado del cliente</a>
+                        <a href="#aplicaciones-lado-servidor">Aplicaciones en el lado del servidor</a>
+                    </div>
+                </li>
+                <li class="nav-menu-item dropdown">
+                    <a href="#servidor-web-local" class="dropdown-button">Servidor web local</a>
+
+                    <div class="dropdown-content">
+                        <a href="#software">Software</a>
+                    </div>
+                </li>
+                <li class="nav-menu-item"><a href="#quienes-somos">Quienes somos</a></li>
+            </ul>
+        </nav>
+
+        <div class="banner">
+            <img class="banner-img" src="assets/img/banner.webp">
+            <div class="banner-info">
+                <h1 class="banner-title">Servidor web</h1>
+                <p>
+                    Un servidor es un dispositivo virtual que le brinda espacio y estructura a los sitios web para que
+                    almacenen sus datos y manejen sus páginas
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="servidor-web">
+            <h2>Servidor web</h2>
+            <p>
+                Un <b>Servidor web</b> es un programa informático que procesa una aplicación del lado del servidor,
+                realizando conexiones
+                bidireccionales o unidireccionales y síncronas o asíncronas con el cliente y generando o cediendo una
+                respuesta en cualquier lenguaje o aplicación del lado del cliente. El código recibido por el cliente es
+                renderizado por un navegador web. Para la transmisión de todos estos datos suele utilizarse algún
+                protocolo. Generalmente se usa el protocolo HTTP para estas comunicaciones, perteneciente a la capa de
+                aplicación del modelo OSI. El término también se emplea para referirse al ordenador donde se ejecutan
+                esas tareas.
+            </p>
+
+
+        </section>
+
+        <section>
+            <h2 id="usos">Usos de un servidor web</h2>
+
+            <p>
+                La función de los servidores web es la de mediar entre las solicitudes de los usuarios y los archivos
+                que
+                contienen la información solicitada, en el computador en el que están almacenados. Por ende, se necesita
+                uno
+                para publicar un sitio web, y también para tener acceso a los datos que componen una página web
+                cualquiera. El rol principal de un servidor web es almacenar y transmitir el contenido solicitado de un
+                sitio web al navegador del usuario.
+
+                Este proceso, para los internautas no dura más que un segundo, sin embargo, a nivel del web server es
+                una secuencia más complicada de lo que parece.
+
+                Para cumplir con sus funciones el servidor deberá tener la capacidad de estar siempre encendido para
+                evitar interrumpir el servicio que le ofrece a sus clientes. Si dicho servidor falla o se apaga, los
+                internautas tendrán problemas al ingresar al sitio web.
+            </p>
+        </section>
+
+        <section>
+            <h2 id="arquitectura">Arquitectura</h2>
+
+            <article id="peticion-get">
+                <h3>Petición GET</h3>
+
+                <p>
+                    Un servidor web opera mediante el protocolo HTTP, de la capa de aplicación del Modelo OSI. Al
+                    protocolo HTTP se le asigna habitualmente el puerto TCP 80. Las peticiones al servidor suelen
+                    realizarse mediante HTTP utilizando el método de petición GET, en el que el recurso se solicita a
+                    través de la URL al servidor web.
+
+                <pre>
+                        GET /index.html HTTP/1.1 HOST: www.host.com
+                    </pre>
+
+                En la barra de URL de un navegador cualquiera, la petición anterior sería análoga a la siguiente
+                dirección web:
+
+                <pre>
+                        www.host.com/index.html
+                    </pre>
+                </p>
+            </article>
+
+            <article id="peticion-post">
+                <h3>Petición POST</h3>
+
+                <p>
+                    Es el segundo tipo de petición HTTP más utilizado. Los datos a enviar al servidor se incluyen en el
+                    cuerpo de la misma petición con las cabeceras HTTP asignadas correspondientemente respecto al tipo
+                    de petición. Generalmente se asocia con los formularios web en los que los datos suelen ser cifrados
+                    para enviarlos de manera segura al servidor.
+
+                    Por motivos de convención se incluye en la petición la cabecera application/x-www-form-urlencoded,
+                    que indica el formato o codificación de los datos a enviar; esta es variable->valor en el formato:
+                    variable=valor separada cada par variable->valor por &. Esta cabecera, en los formularios HTML se
+                    envía automáticamente, pero en otras tecnologías web tal como AJAX, si se desea hacer correctamente
+                    una petición POST, debe ser especificado o instanciado el objeto:
+
+                <pre>
+                        setRequestHeader("Content-type:application/x-www-form-urlencode"); ajax.send(data);
+                    </pre>
+
+                Si se utilizase el método GET los datos deberían de ser añadidos a la URL, lo que los expondría a
+                ser vistos de forma directa.
+                </p>
+            </article>
+        </section>
+
+        <section id="funcionamiento">
+            <h2>Funcionamiento</h2>
+
+            <p>
+                El servidor web se ejecuta en un ordenador manteniéndose a la espera de peticiones por parte de un
+                cliente (un navegador web) y responde a estas peticiones adecuadamente, mediante una página web que se
+                exhibirá en el navegador o mostrando el respectivo mensaje si se detectó algún error. El servidor
+                responde al cliente enviando el código HTML de la página; el cliente, una vez recibido el código, lo
+                interpreta y lo exhibe en pantalla. Como vemos con este ejemplo, el cliente es el
+                encargado de interpretar el código HTML, es decir, de mostrar las fuentes, los colores y la disposición
+                de los textos y objetos de la página; el servidor tan sólo se limita a transferir el código de la página
+                sin llevar a cabo ninguna interpretación de la misma.
+            </p>
+
+            <article id="tipos de aplicaciones">
+                <h3>Tipos de aplicaciones</h3>
+
+                <p>
+                    Además de la transferencia de código HTML, los servidores web pueden entregar aplicaciones web.
+                    Estas
+                    son porciones de código que se ejecutan cuando se realizan ciertas peticiones o respuestas HTTP. Hay
+                    que
+                    distinguir entre:
+                </p>
+
+                <ul>
+                    <li id="aplicaciones-lado-cliente">
+                        <h4>Aplicaciones en el lado del cliente</h4>
+                        <p>
+                            El cliente web es el encargado de ejecutarlas en la máquina del usuario. Son las
+                            aplicaciones tipo
+                            Java "applets" o Javascript: el servidor proporciona el código de las aplicaciones al
+                            cliente y
+                            este, mediante el navegador, las ejecuta. Es necesario, por tanto, que el cliente disponga
+                            de un
+                            navegador con capacidad para ejecutar aplicaciones (también llamadas scripts). Comúnmente,
+                            los
+                            navegadores permiten ejecutar aplicaciones escritas en lenguaje Javascript y Java, aunque
+                            pueden
+                            añadirse más lenguajes mediante el uso de plugins.
+                        </p>
+                    </li>
+
+                    <li id="aplicaciones-lado-servidor">
+                        <h4>Aplicaciones en el lado del servidor</h4>
+                        <p>
+                            Una aplicación del lado del servidor es cualquier programa o conjunto de instrucciones
+                            diseñadas con la finalidad de que un servidor web las procese para realizar alguna acción.
+                            El servidor web ejecuta la aplicación, que una vez ejecutada, genera cierto código HTML. El
+                            servidor
+                            toma este código recién creado y lo envía al cliente por medio del protocolo HTTP.
+                        </p>
+
+                        <p>El 75% de las aplicaciones del lado del servidor están escritas en PHP, seguido de ASP y las
+                            demás opciones usadas de forma alternativa y muy casual.</p>
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="servidor-web-local">
+            <h2>Servidor local</h2>
+
+            <p>
+                Un servidor web local es aquel servidor web que reside en una red local al equipo de referencia. El
+                servidor web local puede estar instalado en cualquiera de los equipos que forman parte de una red local.
+                Es por tanto obvio, que todos los servidores web, son locales a la red local en la que se encuentran, o
+                como mínimo, locales al sistema en el que están instalados.
+            </p>
+            <p>
+                Cuando un servidor web se encuentra instalado en el mismo equipo desde el cual se desea acceder puede
+                utilizarse la dirección de Loopback, 127.0.0.1 en Ipv4 y ::1 en Ipv6. El puerto TCP 80 se obvia. Los
+                archivos se almacenan en un directorio determinado por la configuración, generalmente modificable.
+            </p>
+            <p>
+                Existen numerosas aplicaciones que facilitan la instalación automática de servidores web Apache y
+                aplicaciones adicionales como Mysql y PHP (entre otros), de forma conjunta, como XAMPP, JAMP o EasyPHP.
+                Estas aplicaciones reciben el nombre de LAMP cuando se instalan en plataformas Linux, WAMP en sistemas
+                Windows y MAMP en sistemas Apple Macintosh.
+            </p>
+
+            <h3 id="software">Principales software</h3>
+
+            <ul class="brands">
+                <li class="brands-item">
+                    <a href="https://httpd.apache.org/">
+                        <img src="assets/img/apache-logo.svg" alt="logo" />
+                    </a>
+                    <p>Apache HTTP Server Project</p>
+                </li>
+                <li class="brands-item">
+                    <a href="https://www.iis.net/">
+                        <img src="assets/img/iis-logo.png" alt="logo" />
+                    </a>
+                    <p>IIS Server</p>
+                </li>
+                <li class="brands-item">
+                    <a href="https://www.nginx.com/">
+                        <img src="assets/img/nginx-logo.png" alt="logo" />
+                    </a>
+                    <p>NGINX</p>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 id="quienes-somos">Quienes somos</h2>
+
+            <p>
+                Soy Luis Medina, estudiante de ingeniería en informática, creador de este sitio web sobre tecnología e
+                informática, con la aspiración de que más personas se interesen en el increíble mundo de la información,
+                que nos acompaña en nuestro día a día, nos rodea y cada vez se hace más grande. Todos podemos aportar al
+                mundo conectado en el que vivimos hoy en día, haciendo la vida de las personas cada vez mejor y más
+                fácil. La tecnología surgió para facilitarnos la vida, en la actualidad eso no cambia y cada vez se
+                avanza más. Con este sitio web se espera atraer cada vez a más personas y mantener al día a quienes se
+                interesen por esta maravillosa área del conocimiento humano.
+            </p>
+        </section>
+    </main>
+</body>
+
+</html>
